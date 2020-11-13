@@ -85,19 +85,102 @@ colorbar_axes = fig.add_axes([0.15, 0.82, 0.70, 0.025], label="color_bar")
 
 # Draw the map
 for state, state_shape_file in STATE_SHAPE_FILES.items():
-    state_df = gpd.read_file(state_shape_file) 
+    state_df = gpd.read_file(state_shape_file)
+    label_color = WHITE
+
     # Plot Alaska with the Alaska Albers Equal Area Conic projection
     if state == 'AK':
         state_df = state_df.to_crs('esri:102006')
-        hawaii = state_df.plot(ax=alaska_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
+        alaska = state_df.plot(ax=alaska_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
+        label_x = state_df.geometry.centroid.iloc[0].coords[0][0]
+        label_y = state_df.geometry.centroid.iloc[0].coords[0][1]
+        alaska_axes.text(
+            s=state,
+            x=label_x,
+            y=label_y,
+            horizontalalignment='center',
+            verticalalignment='center',
+            fontsize=12,
+            color=label_color,
+        )
+        
     # Plot Hawaii with the Hawaii Albers Equal Area Conic projection
-    elif state == "HI":
+    elif state == 'HI':
         state_df = state_df.to_crs('esri:102007')
-        alaska = state_df.plot(ax=hawaii_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
+        hawaii = state_df.plot(ax=hawaii_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
+        label_x = state_df.geometry.centroid.iloc[0].coords[0][0]
+        label_y = state_df.geometry.centroid.iloc[0].coords[0][1]
+        label_color = BLACK
+        hawaii_axes.text(
+            s=state,
+            x=0,
+            y=1000000,  # these coordinates via trial and error
+            horizontalalignment='center',
+            verticalalignment='center',
+            fontsize=12,
+            color=label_color,
+        )
     else:
         # Plot the Lower 48 with the USA Contiguous Albers Equal Area Conic projection
         state_df = state_df.to_crs('esri:102003')
         lower_48 = state_df.plot(ax=continguous_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
+        label_x = state_df.geometry.centroid.iloc[0].coords[0][0]
+        label_y = state_df.geometry.centroid.iloc[0].coords[0][1]
+
+        # Fix the state labels that need fixing; all trial and error
+        if state == 'WI':
+            label_x = 480000
+            label_y = 800000
+        elif state == 'MI':
+            label_x = 900000
+            label_y = 680000
+        elif state == 'DC':
+            label_x = 1850000
+            label_y = 180000
+            label_color = BLACK
+        elif state == 'MD':
+            label_x = 1890000
+            label_y = 260000
+            label_color = BLACK
+        elif state == 'DE':
+            label_x = 1870000
+            label_color = BLACK
+        elif state == 'NJ':
+            label_x = 1900000
+            label_color = BLACK
+        elif state == 'CT':
+            label_x = 2030000
+            label_y = 630000
+            label_color = BLACK
+        elif state == 'RI':
+            label_x = 2130000
+            label_y = 680000
+            label_color = BLACK
+        elif state == 'MA':
+            label_x = 2130000
+            label_y = 800000
+            label_color = BLACK
+        elif state == 'VT':
+            label_y = 990000
+        elif state == 'NH':
+            label_x = 2100000
+            label_y = 900000
+            label_color = BLACK
+        elif state == 'FL':
+            label_x = 1390000
+        elif state == 'LA':
+            label_x = 322000
+            pass
+        
+        continguous_axes.text(
+            s=state,
+            x=label_x,
+            y=label_y,
+            horizontalalignment='center',
+            verticalalignment='center',
+            fontsize=12,
+            color=label_color,
+        )
 
 # Draw the colorbar
 cmap = colors.ListedColormap([BLUE, RED])
