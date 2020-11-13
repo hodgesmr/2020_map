@@ -6,7 +6,8 @@ import pandas as pd
 
 BLUE = "#1375B7"
 RED = "#C93135"
-WHITE = "#F2F4F8"
+OFF_WHITE = "#F2F4F8"
+WHITE = "#FFFFFF"
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 
@@ -67,10 +68,32 @@ STATE_COLORS = {
 }
 
 fig, ax0 = plt.subplots(figsize=(20, 15))
+ax0.set_axis_off()
+ax0.axis('equal')
+continguous_axes = fig.add_axes([0, 0, 1, 1], label="contiguous")
+continguous_axes.set_axis_off()
+continguous_axes.axis('equal')
+hawaii_axes = fig.add_axes([0, 0.05, 0.4, 0.4], label="hawaii")
+hawaii_axes.set_axis_off()
+hawaii_axes.axis('equal')
+alaska_axes = fig.add_axes([0.05, 0.05, 0.25, 0.25], label="alaska")
+alaska_axes.set_axis_off()
+alaska_axes.axis('equal')
+
 
 for state, state_shape_file in STATE_SHAPE_FILES.items():
-    state_df = gpd.read_file(state_shape_file)
-    state_df = state_df.to_crs('esri:102003')
-    state_df.plot(ax=ax0, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
+    state_df = gpd.read_file(state_shape_file) 
+    # Plot Alaska with the Alaska Albers Equal Area Conic projection
+    if state == 'AK':
+        state_df = state_df.to_crs('esri:102006')
+        state_df.plot(ax=alaska_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
+    # Plot Hawaii with the Hawaii Albers Equal Area Conic projection
+    elif state == "HI":
+        state_df = state_df.to_crs('esri:102007')
+        state_df.plot(ax=hawaii_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
+    else:
+        # Plot the Lower 48 with the USA Contiguous Albers Equal Area Conic projection
+        state_df = state_df.to_crs('esri:102003')
+        state_df.plot(ax=continguous_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
 
 plt.show()
