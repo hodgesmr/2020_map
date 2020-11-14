@@ -9,7 +9,7 @@ BLUE = "#1375B7"
 RED = "#C93135"
 OFF_WHITE = "#F2F4F8"
 WHITE = "#FFFFFF"
-BLACK = "#000000"
+BLACK = "#444444"
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 
@@ -81,15 +81,15 @@ hawaii_axes.axis('equal')
 alaska_axes = fig.add_axes([0.05, -0.05, 0.25, 0.25], label="alaska")
 alaska_axes.set_axis_off()
 alaska_axes.axis('equal')
-colorbar_axes = fig.add_axes([0.15, 0.82, 0.70, 0.025], label="color_bar")
+colorbar_axes = fig.add_axes([0.15, 0.80, 0.70, 0.025], label="color_bar")
 
 # Draw the map
 for state, state_shape_file in STATE_SHAPE_FILES.items():
     state_df = gpd.read_file(state_shape_file)
     label_color = WHITE
 
-    # Plot Alaska with the Alaska Albers Equal Area Conic projection
     if state == 'AK':
+        # Plot Alaska with the Alaska Albers Equal Area Conic projection
         state_df = state_df.to_crs('esri:102006')
         alaska = state_df.plot(ax=alaska_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
         label_x = state_df.geometry.centroid.iloc[0].coords[0][0]
@@ -103,9 +103,9 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             fontsize=12,
             color=label_color,
         )
-        
-    # Plot Hawaii with the Hawaii Albers Equal Area Conic projection
+
     elif state == 'HI':
+        # Plot Hawaii with the Hawaii Albers Equal Area Conic projection
         state_df = state_df.to_crs('esri:102007')
         hawaii = state_df.plot(ax=hawaii_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
         label_x = state_df.geometry.centroid.iloc[0].coords[0][0]
@@ -188,9 +188,93 @@ bounds=[0, 306, 538]
 norm = colors.BoundaryNorm(bounds, cmap.N)
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 colorbar = fig.colorbar(sm, cax=colorbar_axes, ticks=[269], spacing='proportional', drawedges=False, orientation='horizontal')
-colorbar.ax.set_xticklabels([''])
-colorbar.ax.xaxis.set_tick_params(length=20, direction="in", colors=BLACK)
-colorbar.ax.xaxis.set_ticks_position('top')
 colorbar.outline.set_visible(False)
+colorbar_axes.set_xticklabels([''])
+colorbar_axes.xaxis.set_tick_params(length=20, direction="in", colors=BLACK)
+colorbar_axes.xaxis.set_ticks_position('top')
+
+from matplotlib import rcParams
+rcParams['font.family'] = "sans-serif"
+rcParams['font.sans-serif'] = ['Helvetica Neue']
+
+
+colorbar_axes.annotate(
+    "306",
+    xy=(0, 1),
+    xytext=(0, 70),
+    horizontalalignment='left',
+    verticalalignment='top',
+    fontsize=40,
+    fontweight='semibold',
+    color=BLUE,
+    textcoords='offset points',
+    xycoords='axes fraction',
+)
+
+colorbar_axes.annotate(
+    "Joseph R. Biden Jr.",
+    xy=(0, 1),
+    xytext=(0, 34),
+    horizontalalignment='left',
+    verticalalignment='top',
+    fontsize=16,
+    fontweight='regular',
+    color=BLUE,
+    textcoords='offset points',
+    xycoords='axes fraction',
+)
+
+colorbar_axes.annotate(
+    "Kamala D. Harris",
+    xy=(0, 1),
+    xytext=(0, 16),
+    horizontalalignment='left',
+    verticalalignment='top',
+    fontsize=16,
+    fontweight='regular',
+    color=BLUE,
+    textcoords='offset points',
+    xycoords='axes fraction',
+)
+
+colorbar_axes.annotate(
+    "232",
+    xy=(1, 1),
+    xytext=(0, 70),
+    horizontalalignment='right',
+    verticalalignment='top',
+    fontsize=40,
+    fontweight='semibold',
+    color=RED,
+    textcoords='offset points',
+    xycoords='axes fraction',
+)
+
+colorbar_axes.annotate(
+    "Donald J. Trump",
+    xy=(1, 1),
+    xytext=(0, 34),
+    horizontalalignment='right',
+    verticalalignment='top',
+    fontsize=16,
+    fontweight='regular',
+    color=RED,
+    textcoords='offset points',
+    xycoords='axes fraction',
+)
+
+colorbar_axes.annotate(
+    "Michael R. Pence",
+    xy=(1, 1),
+    xytext=(0, 16),
+    horizontalalignment='right',
+    verticalalignment='top',
+    fontsize=16,
+    fontweight='regular',
+    color=RED,
+    textcoords='offset points',
+    xycoords='axes fraction',
+)
+
 
 plt.show()
