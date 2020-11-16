@@ -11,14 +11,19 @@ import numpy as np
 import pandas as pd
 from shapely.geometry import Polygon
 
-BLUE = "#1375B7"
-RED = "#C93135"
-WHITE = "#FFFFFF"
-BLACK = "#444444"
+BLUE = '#1375B7'
+RED = '#C93135'
+WHITE = '#FFFFFF'
+BLACK = '#444444'
+
+BIDEN_VOTES = '78,751,474'
+BIDEN PERCENT = '50.9'
+TRUMP_VOTES = '73,150,873'
+TRUMP PERCENT = '47.3'
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 
-STATE_SHAPE_FILES = {state_file[:2]: f'{CWD}/geographies/{state_file}' for state_file in next(os.walk("geographies"))[2]}
+STATE_SHAPE_FILES = {state_file[:2]: f'{CWD}/geographies/{state_file}' for state_file in next(os.walk('geographies'))[2]}
 
 STATE_COLORS = {
     'AK': RED,
@@ -75,24 +80,24 @@ STATE_COLORS = {
 }
 
 # Fonts
-rcParams['font.family'] = "sans-serif"
+rcParams['font.family'] = 'sans-serif'
 rcParams['font.sans-serif'] = ['Futura']
 
 # Figure and Axes
 fig, ax0 = plt.subplots(figsize=(20, 15))
 ax0.set_axis_off()
 ax0.axis('equal')
-continguous_axes = fig.add_axes([0, 0, 1, 0.8], label="contiguous")
+continguous_axes = fig.add_axes([0, 0, 1, 0.8], label='contiguous')
 continguous_axes.set_axis_off()
 continguous_axes.axis('equal')
-hawaii_axes = fig.add_axes([0, -0.05, 0.4, 0.4], label="hawaii")
+hawaii_axes = fig.add_axes([0, -0.05, 0.4, 0.4], label='hawaii')
 hawaii_axes.set_axis_off()
 hawaii_axes.axis('equal')
-alaska_axes = fig.add_axes([0.05, -0.05, 0.25, 0.25], label="alaska")
+alaska_axes = fig.add_axes([0.05, -0.05, 0.25, 0.25], label='alaska')
 alaska_axes.set_axis_off()
 alaska_axes.axis('equal')
-colorbar_axes = fig.add_axes([0.15, 0.80, 0.70, 0.025], label="color_bar")
-ktf_axes = fig.add_axes([0.3, 0.70, 0.4, 0.4], label="im")
+colorbar_axes = fig.add_axes([0.15, 0.80, 0.70, 0.025], label='color_bar')
+ktf_axes = fig.add_axes([0.3, 0.70, 0.4, 0.4], label='ktf')
 ktf_axes.set_axis_off()
 ktf_axes.axis('equal')
 
@@ -239,13 +244,13 @@ sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 colorbar = fig.colorbar(sm, cax=colorbar_axes, ticks=[269], spacing='proportional', drawedges=False, orientation='horizontal')
 colorbar.outline.set_visible(False)
 colorbar_axes.set_xticklabels([''])
-colorbar_axes.xaxis.set_tick_params(length=20, direction="in", colors=BLACK)
+colorbar_axes.xaxis.set_tick_params(length=20, direction='in', colors=BLACK)
 colorbar_axes.xaxis.set_ticks_position('top')
 
 # Annotate the colorbar
 # 306
 colorbar_axes.annotate(
-    "306",
+    '306',
     xy=(0, 1),
     xytext=(0, 70),
     horizontalalignment='left',
@@ -259,7 +264,7 @@ colorbar_axes.annotate(
 
 # Biden
 colorbar_axes.annotate(
-    "Joseph R. Biden Jr.",
+    'Joseph R. Biden Jr.',
     xy=(0, 1),
     xytext=(0, 34),
     horizontalalignment='left',
@@ -273,7 +278,7 @@ colorbar_axes.annotate(
 
 # Harris
 colorbar_axes.annotate(
-    "Kamala D. Harris",
+    'Kamala D. Harris',
     xy=(0, 1),
     xytext=(0, 16),
     horizontalalignment='left',
@@ -287,7 +292,7 @@ colorbar_axes.annotate(
 
 # 232
 colorbar_axes.annotate(
-    "232",
+    '232',
     xy=(1, 1),
     xytext=(0, 70),
     horizontalalignment='right',
@@ -301,7 +306,7 @@ colorbar_axes.annotate(
 
 # Trump
 colorbar_axes.annotate(
-    "Donald J. Trump",
+    'Donald J. Trump',
     xy=(1, 1),
     xytext=(0, 34),
     horizontalalignment='right',
@@ -315,7 +320,7 @@ colorbar_axes.annotate(
 
 # Pence
 colorbar_axes.annotate(
-    "Michael R. Pence",
+    'Michael R. Pence',
     xy=(1, 1),
     xytext=(0, 16),
     horizontalalignment='right',
