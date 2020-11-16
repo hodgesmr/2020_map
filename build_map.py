@@ -75,7 +75,7 @@ STATE_COLORS = {
 
 # Fonts
 rcParams['font.family'] = "sans-serif"
-rcParams['font.sans-serif'] = ['Helvetica Neue']
+rcParams['font.sans-serif'] = ['Futura']
 
 # Figure and Axes
 fig, ax0 = plt.subplots(figsize=(20, 15))
