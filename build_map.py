@@ -16,10 +16,11 @@ RED = '#C93135'
 WHITE = '#FFFFFF'
 BLACK = '#444444'
 
+# TODO - update these once they're all in
 BIDEN_VOTES = '78,751,474'
-BIDEN PERCENT = '50.9'
+BIDEN_PERCENT = '50.9'
 TRUMP_VOTES = '73,150,873'
-TRUMP PERCENT = '47.3'
+TRUMP_PERCENT = '47.3'
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 
@@ -290,6 +291,20 @@ colorbar_axes.annotate(
     xycoords='axes fraction',
 )
 
+# Biden votes
+colorbar_axes.annotate(
+    f'{BIDEN_VOTES} votes ({BIDEN_PERCENT}%)',
+    xy=(0, 1),
+    xytext=(0, -18),
+    horizontalalignment='left',
+    verticalalignment='top',
+    fontsize=10,
+    fontweight='regular',
+    color=BLACK,
+    textcoords='offset points',
+    xycoords='axes fraction',
+)
+
 # 232
 colorbar_axes.annotate(
     '232',
@@ -328,6 +343,20 @@ colorbar_axes.annotate(
     fontsize=16,
     fontweight='regular',
     color=RED,
+    textcoords='offset points',
+    xycoords='axes fraction',
+)
+
+# Trump votes
+colorbar_axes.annotate(
+    f'{TRUMP_VOTES} votes ({TRUMP_PERCENT}%)',
+    xy=(1, 1),
+    xytext=(0, -18),
+    horizontalalignment='right',
+    verticalalignment='top',
+    fontsize=10,
+    fontweight='regular',
+    color=BLACK,
     textcoords='offset points',
     xycoords='axes fraction',
 )
