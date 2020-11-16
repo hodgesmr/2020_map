@@ -176,8 +176,8 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             label_y = 680000
             label_color = BLACK
         elif state == 'MA':
-            label_x = 2130000
-            label_y = 800000
+            label_x = 2140000
+            label_y = 810000
             label_color = BLACK
         elif state == 'VT':
             label_y = 990000
