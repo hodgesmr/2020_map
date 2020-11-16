@@ -91,10 +91,10 @@ ax0.axis('equal')
 continguous_axes = fig.add_axes([0, 0, 1, 0.8], label='contiguous')
 continguous_axes.set_axis_off()
 continguous_axes.axis('equal')
-hawaii_axes = fig.add_axes([0, -0.05, 0.4, 0.4], label='hawaii')
+hawaii_axes = fig.add_axes([0.28, 0.05, 0.12, 0.12], label='hawaii')
 hawaii_axes.set_axis_off()
 hawaii_axes.axis('equal')
-alaska_axes = fig.add_axes([0.05, -0.05, 0.25, 0.25], label='alaska')
+alaska_axes = fig.add_axes([0.05, 0, 0.25, 0.25], label='alaska')
 alaska_axes.set_axis_off()
 alaska_axes.axis('equal')
 colorbar_axes = fig.add_axes([0.15, 0.80, 0.70, 0.025], label='color_bar')
@@ -110,6 +110,8 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
     if state == 'AK':
         # Plot Alaska with the Alaska Albers Equal Area Conic projection
         state_df = state_df.to_crs('esri:102006')
+        # Clip Alaska based on an area threshold so that we don't draw small dots way off to the West
+        state_df = state_df.loc[state_df.AREA > 0.15]
         alaska = state_df.plot(ax=alaska_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
         label_x = state_df.geometry.centroid.iloc[0].coords[0][0]
         label_y = state_df.geometry.centroid.iloc[0].coords[0][1]
@@ -126,7 +128,9 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
     elif state == 'HI':
         # Plot Hawaii with the Hawaii Albers Equal Area Conic projection
         state_df = state_df.to_crs('esri:102007')
-        hawaii = state_df.plot(ax=hawaii_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
+        # Clip Hawaii only to the largest islands so that we don't draw small dots way off to the West
+        state_df = state_df.loc[state_df.AREA > 0.0099]
+        hawaii = state_df.plot(ax=hawaii_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=0)
         label_x = state_df.geometry.centroid.iloc[0].coords[0][0]
         label_y = state_df.geometry.centroid.iloc[0].coords[0][1]
         label_color = BLACK
