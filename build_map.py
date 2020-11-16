@@ -73,9 +73,11 @@ STATE_COLORS = {
     'WY': RED,
 }
 
+# Fonts
 rcParams['font.family'] = "sans-serif"
 rcParams['font.sans-serif'] = ['Helvetica Neue']
 
+# Figure and Axes
 fig, ax0 = plt.subplots(figsize=(20, 15))
 ax0.set_axis_off()
 ax0.axis('equal')
@@ -180,39 +182,41 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
 
         # Create NE-02 and ME-02.
         # I like the stripe style 270towin.com uses
-        elif state == 'NE':
-            x1 = (float(state_df.geometry.bounds.minx) + float(state_df.geometry.bounds.maxx)) / 2
-            y1 = math.ceil(state_df.geometry.bounds.maxy)
-            x2 = float(x1) + 150000
-            y2 = math.floor(state_df.geometry.bounds.miny)
-            x3 = x1 + 50000
-            y3 = y1
-            x4 = x2 + 50000
-            y4 = y2
-            
-            ne_02_geo = gpd.GeoSeries(Polygon([[x1, y1], [x2, y2], [x4, y4], [x3, y3]]))
-            ne_02_df = gpd.GeoDataFrame(geometry=ne_02_geo, crs=state_df.crs)
-            ne_02_df = gpd.overlay(ne_02_df, state_df,  how='intersection')
-            
-            ne_02 = ne_02_df.plot(ax=continguous_axes, alpha=1, color=BLUE, linewidth=0)
+        elif state == 'NE' or state == 'ME':
+            #Create a polygon through the state shape
 
-        elif state == 'ME':
-            x1 = (float(state_df.geometry.bounds.minx.iloc[0]) + float(state_df.geometry.bounds.maxx.iloc[0])) / 2
+            # Build the left edge of the polygon
+            # Find the midpoint, and then scoot a bit to the left
+            x1 = ((float(state_df.geometry.bounds.minx.iloc[0]) + float(state_df.geometry.bounds.maxx.iloc[0])) / 2) - 150000
+            # Find the highest point in the geometry
             y1 = math.ceil(state_df.geometry.bounds.maxy.iloc[0])
+            # Scoot the bottom of the polygon a bit to the right
             x2 = float(x1) + 150000
+            # Find the lower point in the geometry
             y2 = math.floor(state_df.geometry.bounds.miny.iloc[0])
+
+            # Build the right edge of the polygon by just creating width
             x3 = x1 + 50000
             y3 = y1
             x4 = x2 + 50000
             y4 = y2
             
-            me_02_geo = gpd.GeoSeries(Polygon([[x1, y1], [x2, y2], [x4, y4], [x3, y3]]))
-            me_02_df = gpd.GeoDataFrame(geometry=me_02_geo, crs=state_df.crs)
-            me_02_df = gpd.overlay(me_02_df, state_df,  how='intersection')
-            
-            ne_02 = me_02_df.plot(ax=continguous_axes, alpha=1, color=RED, linewidth=0)
+            # Convert the polygon to a GeoSeries
+            stripe_geo = gpd.GeoSeries(Polygon([[x1, y1], [x2, y2], [x4, y4], [x3, y3]]))
+            # Convert the GeoSeries to a GeoDataFrame and match the projection
+            stripe_df = gpd.GeoDataFrame(geometry=stripe_geo, crs=state_df.crs)
 
-        
+            #Finally, find the intersection of the GeoDataFrame and the state
+            stripe_df = gpd.overlay(stripe_df, state_df,  how='intersection')
+            
+            # Add it to the map
+            if state == 'ME':
+                me_02 = stripe_df.plot(ax=continguous_axes, alpha=1, color=RED, linewidth=0)
+            elif state == 'NE':
+                
+                ne_02 = stripe_df.plot(ax=continguous_axes, alpha=1, color=BLUE, linewidth=0)
+
+        # Draw all the state labels
         continguous_axes.text(
             s=state,
             x=label_x,
@@ -234,6 +238,7 @@ colorbar_axes.set_xticklabels([''])
 colorbar_axes.xaxis.set_tick_params(length=20, direction="in", colors=BLACK)
 colorbar_axes.xaxis.set_ticks_position('top')
 
+# Annotate the colorbar
 colorbar_axes.annotate(
     "306",
     xy=(0, 1),
