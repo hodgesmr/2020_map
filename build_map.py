@@ -243,6 +243,7 @@ colorbar_axes.xaxis.set_tick_params(length=20, direction="in", colors=BLACK)
 colorbar_axes.xaxis.set_ticks_position('top')
 
 # Annotate the colorbar
+# 306
 colorbar_axes.annotate(
     "306",
     xy=(0, 1),
@@ -256,6 +257,7 @@ colorbar_axes.annotate(
     xycoords='axes fraction',
 )
 
+# Biden
 colorbar_axes.annotate(
     "Joseph R. Biden Jr.",
     xy=(0, 1),
@@ -269,6 +271,7 @@ colorbar_axes.annotate(
     xycoords='axes fraction',
 )
 
+# Harris
 colorbar_axes.annotate(
     "Kamala D. Harris",
     xy=(0, 1),
@@ -282,6 +285,7 @@ colorbar_axes.annotate(
     xycoords='axes fraction',
 )
 
+# 232
 colorbar_axes.annotate(
     "232",
     xy=(1, 1),
@@ -295,6 +299,7 @@ colorbar_axes.annotate(
     xycoords='axes fraction',
 )
 
+# Trump
 colorbar_axes.annotate(
     "Donald J. Trump",
     xy=(1, 1),
@@ -308,6 +313,7 @@ colorbar_axes.annotate(
     xycoords='axes fraction',
 )
 
+# Pence
 colorbar_axes.annotate(
     "Michael R. Pence",
     xy=(1, 1),
