@@ -191,14 +191,14 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             # Find the highest point in the geometry
             y1 = math.ceil(state_df.geometry.bounds.maxy.iloc[0])
             # Scoot the bottom of the polygon a bit to the right
-            x2 = float(x1) + 150000
+            x2 = float(x1) + 200000
             # Find the lower point in the geometry
             y2 = math.floor(state_df.geometry.bounds.miny.iloc[0])
 
             # Build the right edge of the polygon by just creating width
-            x3 = x1 + 50000
+            x3 = x1 + 100000
             y3 = y1
-            x4 = x2 + 50000
+            x4 = x2 + 100000
             y4 = y2
             
             # Convert the polygon to a GeoSeries
