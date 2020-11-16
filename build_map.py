@@ -2,8 +2,10 @@ import math
 import os
 
 import geopandas as gpd
+import matplotlib as mpl
 from matplotlib import colors
 from matplotlib import rcParams
+import matplotlib.cbook as cbook
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -91,6 +93,9 @@ alaska_axes = fig.add_axes([0.05, -0.05, 0.25, 0.25], label="alaska")
 alaska_axes.set_axis_off()
 alaska_axes.axis('equal')
 colorbar_axes = fig.add_axes([0.15, 0.80, 0.70, 0.025], label="color_bar")
+ktf_axes = fig.add_axes([0.3, 0.70, 0.4, 0.4], label="im")
+ktf_axes.set_axis_off()
+ktf_axes.axis('equal')
 
 # Draw the map
 for state, state_shape_file in STATE_SHAPE_FILES.items():
@@ -317,5 +322,9 @@ colorbar_axes.annotate(
     xycoords='axes fraction',
 )
 
+# Draw Keep the Faith!
+with cbook.get_sample_data(f'{CWD}/img/keep_the_faith_gray.png') as image_file:
+    ktf_data = plt.imread(image_file)
+    keep_the_faith = ktf_axes.imshow(ktf_data)
 
 plt.show()
