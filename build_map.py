@@ -193,7 +193,7 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
         # Create NE-02 and ME-02.
         # I like the stripe style 270towin.com uses
         elif state == 'NE' or state == 'ME':
-            #Create a polygon through the state shape
+            # Create a polygon through the state shape
 
             # Build the left edge of the polygon
             # Find the midpoint, and then scoot a bit to the left
@@ -206,24 +206,25 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             y2 = math.floor(state_df.geometry.bounds.miny.iloc[0])
 
             # Build the right edge of the polygon by just creating width
-            x3 = x1 + 100000
-            y3 = y1
-            x4 = x2 + 100000
-            y4 = y2
+            x3 = x2 + 100000
+            y3 = y2
+            x4 = x1 + 100000
+            y4 = y1
+
+            stripe_polygon = Polygon([[x1, y1], [x2, y2], [x3, y3], [x4, y4]])
             
             # Convert the polygon to a GeoSeries
-            stripe_geo = gpd.GeoSeries(Polygon([[x1, y1], [x2, y2], [x4, y4], [x3, y3]]))
+            stripe_geo = gpd.GeoSeries(stripe_polygon)
             # Convert the GeoSeries to a GeoDataFrame and match the projection
             stripe_df = gpd.GeoDataFrame(geometry=stripe_geo, crs=state_df.crs)
 
-            #Finally, find the intersection of the GeoDataFrame and the state
+            # Finally, find the intersection of the GeoDataFrame and the state
             stripe_df = gpd.overlay(stripe_df, state_df,  how='intersection')
             
             # Add it to the map
             if state == 'ME':
                 me_02 = stripe_df.plot(ax=continguous_axes, alpha=1, color=RED, linewidth=0)
             elif state == 'NE':
-                
                 ne_02 = stripe_df.plot(ax=continguous_axes, alpha=1, color=BLUE, linewidth=0)
 
         # Draw all the state labels
