@@ -1,9 +1,13 @@
+import math
 import os
 
 import geopandas as gpd
 from matplotlib import colors
+from matplotlib import rcParams
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
+from shapely.geometry import Polygon
 
 BLUE = "#1375B7"
 RED = "#C93135"
@@ -68,6 +72,9 @@ STATE_COLORS = {
     'WV': RED,
     'WY': RED,
 }
+
+rcParams['font.family'] = "sans-serif"
+rcParams['font.sans-serif'] = ['Helvetica Neue']
 
 fig, ax0 = plt.subplots(figsize=(20, 15))
 ax0.set_axis_off()
@@ -170,7 +177,41 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             label_x = 1390000
         elif state == 'LA':
             label_x = 322000
-            pass
+
+        # Create NE-02 and ME-02.
+        # I like the stripe style 270towin.com uses
+        elif state == 'NE':
+            x1 = (float(state_df.geometry.bounds.minx) + float(state_df.geometry.bounds.maxx)) / 2
+            y1 = math.ceil(state_df.geometry.bounds.maxy)
+            x2 = float(x1) + 150000
+            y2 = math.floor(state_df.geometry.bounds.miny)
+            x3 = x1 + 50000
+            y3 = y1
+            x4 = x2 + 50000
+            y4 = y2
+            
+            ne_02_geo = gpd.GeoSeries(Polygon([[x1, y1], [x2, y2], [x4, y4], [x3, y3]]))
+            ne_02_df = gpd.GeoDataFrame(geometry=ne_02_geo, crs=state_df.crs)
+            ne_02_df = gpd.overlay(ne_02_df, state_df,  how='intersection')
+            
+            ne_02 = ne_02_df.plot(ax=continguous_axes, alpha=1, color=BLUE, linewidth=0)
+
+        elif state == 'ME':
+            x1 = (float(state_df.geometry.bounds.minx.iloc[0]) + float(state_df.geometry.bounds.maxx.iloc[0])) / 2
+            y1 = math.ceil(state_df.geometry.bounds.maxy.iloc[0])
+            x2 = float(x1) + 150000
+            y2 = math.floor(state_df.geometry.bounds.miny.iloc[0])
+            x3 = x1 + 50000
+            y3 = y1
+            x4 = x2 + 50000
+            y4 = y2
+            
+            me_02_geo = gpd.GeoSeries(Polygon([[x1, y1], [x2, y2], [x4, y4], [x3, y3]]))
+            me_02_df = gpd.GeoDataFrame(geometry=me_02_geo, crs=state_df.crs)
+            me_02_df = gpd.overlay(me_02_df, state_df,  how='intersection')
+            
+            ne_02 = me_02_df.plot(ax=continguous_axes, alpha=1, color=RED, linewidth=0)
+
         
         continguous_axes.text(
             s=state,
@@ -192,11 +233,6 @@ colorbar.outline.set_visible(False)
 colorbar_axes.set_xticklabels([''])
 colorbar_axes.xaxis.set_tick_params(length=20, direction="in", colors=BLACK)
 colorbar_axes.xaxis.set_ticks_position('top')
-
-from matplotlib import rcParams
-rcParams['font.family'] = "sans-serif"
-rcParams['font.sans-serif'] = ['Helvetica Neue']
-
 
 colorbar_axes.annotate(
     "306",
