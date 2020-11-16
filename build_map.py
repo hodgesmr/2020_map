@@ -13,7 +13,6 @@ from shapely.geometry import Polygon
 
 BLUE = "#1375B7"
 RED = "#C93135"
-OFF_WHITE = "#F2F4F8"
 WHITE = "#FFFFFF"
 BLACK = "#444444"
 
