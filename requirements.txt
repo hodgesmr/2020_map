@@ -2,3 +2,4 @@ descartes==1.1.*
 geopandas==0.8.*
 matplotlib==3.3.*
 pandas==1.1.*
+Rtree==0.9.4
