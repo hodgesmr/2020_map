@@ -11,6 +11,8 @@ import numpy as np
 import pandas as pd
 from shapely.geometry import Polygon
 
+mpl.use('SVG')
+
 BLUE = '#1375B7'
 RED = '#C93135'
 WHITE = '#FFFFFF'
@@ -371,4 +373,6 @@ with cbook.get_sample_data(f'{CWD}/img/keep_the_faith_gray.png') as image_file:
     ktf_data = plt.imread(image_file)
     keep_the_faith = ktf_axes.imshow(ktf_data)
 
-plt.show()
+fig.set_size_inches(20, 16)
+plt.savefig("test.png", bbox_inches='tight', pad_inches=0.5, dpi=300)
+plt.savefig("test.svg", bbox_inches='tight', pad_inches=0.5, dpi=300)
