@@ -1,3 +1,4 @@
+from datetime import datetime
 import math
 import os
 
@@ -93,14 +94,14 @@ ax0.axis('equal')
 continguous_axes = fig.add_axes([0, 0, 1, 0.8], label='contiguous')
 continguous_axes.set_axis_off()
 continguous_axes.axis('equal')
-hawaii_axes = fig.add_axes([0.28, 0.05, 0.12, 0.12], label='hawaii')
+hawaii_axes = fig.add_axes([0.24, 0.05, 0.12, 0.12], label='hawaii')
 hawaii_axes.set_axis_off()
 hawaii_axes.axis('equal')
-alaska_axes = fig.add_axes([0.05, 0, 0.25, 0.25], label='alaska')
+alaska_axes = fig.add_axes([0.015, 0.015, 0.25, 0.25], label='alaska')
 alaska_axes.set_axis_off()
 alaska_axes.axis('equal')
-colorbar_axes = fig.add_axes([0.15, 0.80, 0.70, 0.025], label='color_bar')
-ktf_axes = fig.add_axes([0.3, 0.70, 0.4, 0.4], label='ktf')
+colorbar_axes = fig.add_axes([0.03, 0.8, 0.94, 0.025], label='color_bar')
+ktf_axes = fig.add_axes([0.3, 0.8, 0.4, 0.2], label='ktf')
 ktf_axes.set_axis_off()
 ktf_axes.axis('equal')
 
@@ -123,7 +124,7 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             y=label_y,
             horizontalalignment='center',
             verticalalignment='center',
-            fontsize=12,
+            fontsize=20,
             color=label_color,
         )
 
@@ -142,7 +143,7 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             y=1000000,  # these coordinates via trial and error
             horizontalalignment='center',
             verticalalignment='center',
-            fontsize=12,
+            fontsize=20,
             color=label_color,
         )
     else:
@@ -183,7 +184,7 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             label_color = BLACK
         elif state == 'MA':
             label_x = 2140000
-            label_y = 810000
+            label_y = 815000
             label_color = BLACK
         elif state == 'VT':
             label_y = 990000
@@ -240,7 +241,7 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             y=label_y,
             horizontalalignment='center',
             verticalalignment='center',
-            fontsize=12,
+            fontsize=20,
             color=label_color,
         )
 
@@ -252,7 +253,7 @@ sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 colorbar = fig.colorbar(sm, cax=colorbar_axes, ticks=[269], spacing='proportional', drawedges=False, orientation='horizontal')
 colorbar.outline.set_visible(False)
 colorbar_axes.set_xticklabels([''])
-colorbar_axes.xaxis.set_tick_params(length=20, direction='in', colors=BLACK)
+colorbar_axes.xaxis.set_tick_params(length=45, width=2, direction='in', colors=BLACK)
 colorbar_axes.xaxis.set_ticks_position('top')
 
 # Annotate the colorbar
@@ -260,10 +261,10 @@ colorbar_axes.xaxis.set_ticks_position('top')
 colorbar_axes.annotate(
     '306',
     xy=(0, 1),
-    xytext=(0, 70),
+    xytext=(0, 118),
     horizontalalignment='left',
     verticalalignment='top',
-    fontsize=40,
+    fontsize=75,
     fontweight='semibold',
     color=BLUE,
     textcoords='offset points',
@@ -274,10 +275,10 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     'Joseph R. Biden Jr.',
     xy=(0, 1),
-    xytext=(0, 34),
+    xytext=(0, 53),
     horizontalalignment='left',
     verticalalignment='top',
-    fontsize=16,
+    fontsize=28,
     fontweight='regular',
     color=BLUE,
     textcoords='offset points',
@@ -288,10 +289,10 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     'Kamala D. Harris',
     xy=(0, 1),
-    xytext=(0, 16),
+    xytext=(0, 27),
     horizontalalignment='left',
     verticalalignment='top',
-    fontsize=16,
+    fontsize=28,
     fontweight='regular',
     color=BLUE,
     textcoords='offset points',
@@ -302,10 +303,10 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     f'{BIDEN_VOTES} votes ({BIDEN_PERCENT}%)',
     xy=(0, 1),
-    xytext=(0, -18),
+    xytext=(0, -32),
     horizontalalignment='left',
     verticalalignment='top',
-    fontsize=10,
+    fontsize=16,
     fontweight='regular',
     color=BLACK,
     textcoords='offset points',
@@ -316,10 +317,10 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     '232',
     xy=(1, 1),
-    xytext=(0, 70),
+    xytext=(0, 118),
     horizontalalignment='right',
     verticalalignment='top',
-    fontsize=40,
+    fontsize=75,
     fontweight='semibold',
     color=RED,
     textcoords='offset points',
@@ -330,10 +331,10 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     'Donald J. Trump',
     xy=(1, 1),
-    xytext=(0, 34),
+    xytext=(0, 53),
     horizontalalignment='right',
     verticalalignment='top',
-    fontsize=16,
+    fontsize=28,
     fontweight='regular',
     color=RED,
     textcoords='offset points',
@@ -344,10 +345,10 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     'Michael R. Pence',
     xy=(1, 1),
-    xytext=(0, 16),
+    xytext=(0, 27),
     horizontalalignment='right',
     verticalalignment='top',
-    fontsize=16,
+    fontsize=28,
     fontweight='regular',
     color=RED,
     textcoords='offset points',
@@ -358,10 +359,10 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     f'{TRUMP_VOTES} votes ({TRUMP_PERCENT}%)',
     xy=(1, 1),
-    xytext=(0, -18),
+    xytext=(0, -32),
     horizontalalignment='right',
     verticalalignment='top',
-    fontsize=10,
+    fontsize=16,
     fontweight='regular',
     color=BLACK,
     textcoords='offset points',
@@ -374,5 +375,7 @@ with cbook.get_sample_data(f'{CWD}/img/keep_the_faith_gray.png') as image_file:
     keep_the_faith = ktf_axes.imshow(ktf_data)
 
 fig.set_size_inches(20, 16)
-plt.savefig("test.png", bbox_inches='tight', pad_inches=0.5, dpi=300)
-plt.savefig("test.svg", bbox_inches='tight', pad_inches=0.5, dpi=300)
+timestamp = datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%SZ')
+output_name = f'{CWD}/output/map_{timestamp}'
+plt.savefig(f'{output_name}.png', bbox_inches=fig.bbox_inches, dpi=300)
+plt.savefig(f'{output_name}.svg', bbox_inches=fig.bbox_inches, dpi=300)
