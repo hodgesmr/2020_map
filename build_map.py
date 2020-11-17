@@ -100,8 +100,8 @@ hawaii_axes.axis('equal')
 alaska_axes = fig.add_axes([0.015, 0.015, 0.25, 0.25], label='alaska')
 alaska_axes.set_axis_off()
 alaska_axes.axis('equal')
-colorbar_axes = fig.add_axes([0.03, 0.8, 0.94, 0.025], label='color_bar')
-ktf_axes = fig.add_axes([0.3, 0.8, 0.4, 0.2], label='ktf')
+colorbar_axes = fig.add_axes([0.03, 0.805, 0.94, 0.025], label='color_bar')
+ktf_axes = fig.add_axes([0.3, 0.805, 0.4, 0.2], label='ktf')
 ktf_axes.set_axis_off()
 ktf_axes.axis('equal')
 
@@ -308,7 +308,7 @@ colorbar_axes.annotate(
     xytext=(0, -32),
     horizontalalignment='left',
     verticalalignment='top',
-    fontsize=16,
+    fontsize=20,
     fontweight='regular',
     color=BLACK,
     textcoords='offset points',
@@ -364,7 +364,7 @@ colorbar_axes.annotate(
     xytext=(0, -32),
     horizontalalignment='right',
     verticalalignment='top',
-    fontsize=16,
+    fontsize=20,
     fontweight='regular',
     color=BLACK,
     textcoords='offset points',
