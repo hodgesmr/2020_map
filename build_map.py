@@ -20,9 +20,9 @@ WHITE = '#FFFFFF'
 BLACK = '#444444'
 
 # TODO - update these once they're all in
-BIDEN_VOTES = '78,751,474'
+BIDEN_VOTES = '78,894,952'
 BIDEN_PERCENT = '50.9'
-TRUMP_VOTES = '73,150,873'
+TRUMP_VOTES = '73,243,049'
 TRUMP_PERCENT = '47.3'
 
 CWD = os.path.dirname(os.path.realpath(__file__))
