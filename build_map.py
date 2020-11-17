@@ -263,7 +263,7 @@ colorbar_axes.xaxis.set_ticks_position('top')
 colorbar_axes.annotate(
     '306',
     xy=(0, 0),
-    xytext=(0, 284),
+    xytext=(0, 302),
     horizontalalignment='left',
     verticalalignment='bottom',
     fontsize=90,
@@ -277,7 +277,7 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     'Joseph R. Biden Jr.',
     xy=(0, 0),
-    xytext=(0, 224),
+    xytext=(0, 236),
     horizontalalignment='left',
     verticalalignment='bottom',
     fontsize=32,
@@ -291,7 +291,7 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     'Kamala D. Harris',
     xy=(0, 0),
-    xytext=(0, 104),
+    xytext=(0, 110),
     horizontalalignment='left',
     verticalalignment='bottom',
     fontsize=32,
@@ -319,7 +319,7 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     '232',
     xy=(1, 0),
-    xytext=(0, 284),
+    xytext=(0, 302),
     horizontalalignment='right',
     verticalalignment='bottom',
     fontsize=90,
@@ -333,7 +333,7 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     'Donald J. Trump',
     xy=(1, 0),
-    xytext=(0, 224),
+    xytext=(0, 236),
     horizontalalignment='right',
     verticalalignment='bottom',
     fontsize=32,
@@ -347,7 +347,7 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     'Michael R. Pence',
     xy=(1, 0),
-    xytext=(0, 104),
+    xytext=(0, 110),
     horizontalalignment='right',
     verticalalignment='bottom',
     fontsize=32,
