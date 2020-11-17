@@ -262,112 +262,112 @@ colorbar_axes.xaxis.set_ticks_position('top')
 # 306
 colorbar_axes.annotate(
     '306',
-    xy=(0, 1),
-    xytext=(0, 118),
+    xy=(0, 0),
+    xytext=(0, 284),
     horizontalalignment='left',
-    verticalalignment='top',
-    fontsize=75,
+    verticalalignment='bottom',
+    fontsize=90,
     fontweight='semibold',
     color=BLUE,
-    textcoords='offset points',
+    textcoords='offset pixels',
     xycoords='axes fraction',
 )
 
 # Biden
 colorbar_axes.annotate(
     'Joseph R. Biden Jr.',
-    xy=(0, 1),
-    xytext=(0, 53),
+    xy=(0, 0),
+    xytext=(0, 224),
     horizontalalignment='left',
-    verticalalignment='top',
-    fontsize=28,
+    verticalalignment='bottom',
+    fontsize=32,
     fontweight='regular',
     color=BLUE,
-    textcoords='offset points',
+    textcoords='offset pixels',
     xycoords='axes fraction',
 )
 
 # Harris
 colorbar_axes.annotate(
     'Kamala D. Harris',
-    xy=(0, 1),
-    xytext=(0, 27),
+    xy=(0, 0),
+    xytext=(0, 104),
     horizontalalignment='left',
-    verticalalignment='top',
-    fontsize=28,
+    verticalalignment='bottom',
+    fontsize=32,
     fontweight='regular',
     color=BLUE,
-    textcoords='offset points',
+    textcoords='offset pixels',
     xycoords='axes fraction',
 )
 
 # Biden votes
 colorbar_axes.annotate(
     f'{BIDEN_VOTES} votes ({BIDEN_PERCENT}%)',
-    xy=(0, 1),
-    xytext=(0, -32),
+    xy=(0, 0),
+    xytext=(0, -12),
     horizontalalignment='left',
     verticalalignment='top',
     fontsize=20,
     fontweight='regular',
     color=BLACK,
-    textcoords='offset points',
+    textcoords='offset pixels',
     xycoords='axes fraction',
 )
 
 # 232
 colorbar_axes.annotate(
     '232',
-    xy=(1, 1),
-    xytext=(0, 118),
+    xy=(1, 0),
+    xytext=(0, 284),
     horizontalalignment='right',
-    verticalalignment='top',
-    fontsize=75,
+    verticalalignment='bottom',
+    fontsize=90,
     fontweight='semibold',
     color=RED,
-    textcoords='offset points',
+    textcoords='offset pixels',
     xycoords='axes fraction',
 )
 
 # Trump
 colorbar_axes.annotate(
     'Donald J. Trump',
-    xy=(1, 1),
-    xytext=(0, 53),
+    xy=(1, 0),
+    xytext=(0, 224),
     horizontalalignment='right',
-    verticalalignment='top',
-    fontsize=28,
+    verticalalignment='bottom',
+    fontsize=32,
     fontweight='regular',
     color=RED,
-    textcoords='offset points',
+    textcoords='offset pixels',
     xycoords='axes fraction',
 )
 
 # Pence
 colorbar_axes.annotate(
     'Michael R. Pence',
-    xy=(1, 1),
-    xytext=(0, 27),
+    xy=(1, 0),
+    xytext=(0, 104),
     horizontalalignment='right',
-    verticalalignment='top',
-    fontsize=28,
+    verticalalignment='bottom',
+    fontsize=32,
     fontweight='regular',
     color=RED,
-    textcoords='offset points',
+    textcoords='offset pixels',
     xycoords='axes fraction',
 )
 
 # Trump votes
 colorbar_axes.annotate(
     f'{TRUMP_VOTES} votes ({TRUMP_PERCENT}%)',
-    xy=(1, 1),
-    xytext=(0, -32),
+    xy=(1, 0),
+    xytext=(0, -12),
     horizontalalignment='right',
     verticalalignment='top',
     fontsize=20,
     fontweight='regular',
     color=BLACK,
-    textcoords='offset points',
+    textcoords='offset pixels',
     xycoords='axes fraction',
 )
 
