@@ -109,6 +109,7 @@ ktf_axes.axis('equal')
 for state, state_shape_file in STATE_SHAPE_FILES.items():
     state_df = gpd.read_file(state_shape_file)
     label_color = WHITE
+    label_font_size = 24
 
     if state == 'AK':
         # Plot Alaska with the Alaska Albers Equal Area Conic projection
@@ -124,7 +125,7 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             y=label_y,
             horizontalalignment='center',
             verticalalignment='center',
-            fontsize=20,
+            fontsize=label_font_size,
             color=label_color,
         )
 
@@ -143,13 +144,13 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             y=1000000,  # these coordinates via trial and error
             horizontalalignment='center',
             verticalalignment='center',
-            fontsize=20,
+            fontsize=label_font_size,
             color=label_color,
         )
     else:
         # Plot the Lower 48 with the USA Contiguous Albers Equal Area Conic projection
         state_df = state_df.to_crs('esri:102003')
-        lower_48 = state_df.plot(ax=continguous_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=1)
+        lower_48 = state_df.plot(ax=continguous_axes, alpha=1, edgecolor=WHITE, color=STATE_COLORS[state], linewidth=2)
         label_x = state_df.geometry.centroid.iloc[0].coords[0][0]
         label_y = state_df.geometry.centroid.iloc[0].coords[0][1]
 
@@ -180,13 +181,14 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             label_color = BLACK
         elif state == 'RI':
             label_x = 2130000
-            label_y = 680000
+            label_y = 660000
             label_color = BLACK
         elif state == 'MA':
             label_x = 2140000
             label_y = 815000
             label_color = BLACK
         elif state == 'VT':
+            label_x = 1835000
             label_y = 990000
         elif state == 'NH':
             label_x = 2100000
@@ -241,7 +243,7 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             y=label_y,
             horizontalalignment='center',
             verticalalignment='center',
-            fontsize=20,
+            fontsize=label_font_size,
             color=label_color,
         )
 
@@ -378,4 +380,4 @@ fig.set_size_inches(20, 16)
 timestamp = datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%SZ')
 output_name = f'{CWD}/output/map_{timestamp}'
 plt.savefig(f'{output_name}.png', bbox_inches=fig.bbox_inches, dpi=300)
-plt.savefig(f'{output_name}.svg', bbox_inches=fig.bbox_inches, dpi=300)
+# plt.savefig(f'{output_name}.svg', bbox_inches=fig.bbox_inches, dpi=300)
