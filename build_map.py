@@ -380,4 +380,4 @@ fig.set_size_inches(20, 16)
 timestamp = datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%SZ')
 output_name = f'{CWD}/output/map_{timestamp}'
 plt.savefig(f'{output_name}.png', bbox_inches=fig.bbox_inches, dpi=300)
-# plt.savefig(f'{output_name}.svg', bbox_inches=fig.bbox_inches, dpi=300)
+plt.savefig(f'{output_name}.svg', bbox_inches=fig.bbox_inches, dpi=300)
