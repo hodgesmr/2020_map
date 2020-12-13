@@ -19,11 +19,11 @@ RED = '#C93135'
 WHITE = '#FFFFFF'
 BLACK = '#444444'
 
-# TODO - update these once they're all in
-BIDEN_VOTES = '79,303,143'
-BIDEN_PERCENT = '51.0'
-TRUMP_VOTES = '73,470,739'
-TRUMP_PERCENT = '47.2'
+# https://cookpolitical.com/2020-national-popular-vote-tracker
+BIDEN_VOTES = '81,282,376'
+BIDEN_PERCENT = '51.3'
+TRUMP_VOTES = '74,222,576'
+TRUMP_PERCENT = '46.9'
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 
@@ -377,6 +377,7 @@ with cbook.get_sample_data(f'{CWD}/img/keep_the_faith_gray.png') as image_file:
     ktf_data = plt.imread(image_file)
     keep_the_faith = ktf_axes.imshow(ktf_data)
 
+# Save the images
 fig.set_size_inches(20, 16)
 timestamp = datetime.utcnow().strftime('%Y_%m_%d_%H_%M_%SZ')
 output_name = f'{CWD}/output/map_{timestamp}'
