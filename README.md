@@ -1,19 +1,13 @@
 # 2020_map
 
+A custom 2020 Electoral College map created by [Matt Hodges](https://hodgesmr1@gmail.com)
+
 ## Setup
 
-I built this using Python 3.9, but it probably works with Python 3.6 or later.
-
-Before you get going, you probably need to install [GDAL](https://gdal.org/) on your system. There are lots of ways to do that, but if you're on a Mac, the easiest is with [Homebrew](https://brew.sh/):
+I built this using Python 3.9, but it probably works with Python 3.6 or later. The fastest way to get up and running is to build the [Docker](https://docs.docker.com/get-docker/) image with the provided make target:
 
 ```sh
-brew install gdal
-```
-
-Then, you likely want a Python [virtual environment](https://docs.python.org/3/library/venv.html), and install the requirements:
-
-```sh
-pip install -r requirements.txt
+make build
 ```
 
 ## Run
@@ -21,12 +15,10 @@ pip install -r requirements.txt
 To generate a map to the `output/` directory:
 
 ```sh
-python build_map.py
+make map
 ```
 
-## Fonts
-
-This project uses the [Futura font](https://github.com/hodgesmr/2020_map/blob/main/build_map.py#L88), which is a system font on macOS. If you don't have Futura on your system, it will fall back to a different font and your image will look different.
+This will start the Docker countain mounted to the local `output/` directory, and generate both PNG and SVG images.
 
 ## Keep the Faith!
 
@@ -41,6 +33,8 @@ A trace of President Biden's hand-written message is featured on this map.
 ## Licenses
 
 All original code is provided under the [BSD 3-Clause license](https://github.com/hodgesmr/2020_map/blob/master/LICENSE).
+
+This project uses the [Jost* font](https://indestructibletype.com/Jost.html), which is licensed under the [SIL open font license](http://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web). The font is included in this repository.
 
 The state geography geojson files are derived from the [U.S. Census Bureau's Cartographic Boundary Files](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html).
 
