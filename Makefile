@@ -1,4 +1,4 @@
-VERSION := $(shell git describe --abbrev=0 --tags)
+VERSION := $(shell git rev-parse --short HEAD)
 BUILD_DATE := "$(shell date -u)"
 VCS_REF := $(shell git log -1 --pretty=%h)
 NAME := $(shell pwd | xargs basename)
@@ -30,5 +30,5 @@ build:
 	--build-arg WORKDIR=${WORKDIR}
 
 .EXPORT_ALL_VARIABLES:
-map:
+map: build
 	docker run --rm -v "$(PWD)/output:${WORKDIR}/output" ${ORG}/${NAME}

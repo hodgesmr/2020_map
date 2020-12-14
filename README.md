@@ -2,17 +2,9 @@
 
 A custom 2020 Electoral College map created by [Matt Hodges](https://hodgesmr1@gmail.com)
 
-## Setup
+## Build and Run
 
-I built this using Python 3.9, but it probably works with Python 3.6 or later. The fastest way to get up and running is to build the [Docker](https://docs.docker.com/get-docker/) image with the provided make target:
-
-```sh
-make build
-```
-
-## Run
-
-To generate a map to the `output/` directory:
+I built this using Python 3.9, but it probably works with Python 3.6 or later. The fastest way to get up and running is to build and run the [Docker](https://docs.docker.com/get-docker/) image with the provided make target:
 
 ```sh
 make map
