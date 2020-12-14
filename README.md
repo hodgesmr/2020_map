@@ -1,6 +1,6 @@
 # 2020_map
 
-![2020 map](https://github.com/hodgesmr/2020_map/blob/master/map_small.png)
+![2020 map](https://repository-images.githubusercontent.com/312166617/48f6fb80-3e00-11eb-9d19-3d7229d43ddf)
 
 A custom 2020 Electoral College map created by [Matt Hodges](https://hodgesmr1@gmail.com)
 
