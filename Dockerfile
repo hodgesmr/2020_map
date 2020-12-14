@@ -9,17 +9,24 @@ RUN apt update && \
 
 ARG WORKDIR
 WORKDIR $WORKDIR
-COPY . .
 
+COPY font/ font/
 RUN mkdir /usr/share/fonts/truetype/jost/
 RUN unzip -d /tmp font/Jost.zip
 RUN mv /tmp/TrueType/*.ttf /usr/local/share/fonts/
 RUN fc-cache -fv
 
+COPY geographies/ geographies/
+COPY img/ img/
+
+COPY requirements.txt .
 RUN mkdir -p venvs
 RUN python3 -m venv venvs/2020_map
 RUN venvs/2020_map/bin/pip install --upgrade pip
 RUN venvs/2020_map/bin/pip install -r requirements.txt
+
+COPY build_map.py .
+
 ENV MPLCONFIGDIR "/tmp"
 
 ARG BUILD_DATE
