@@ -372,6 +372,20 @@ colorbar_axes.annotate(
     xycoords='axes fraction',
 )
 
+# Draw the date
+colorbar_axes.annotate(
+    'November 3, 2020',
+    xy=(0.5, 0),
+    xytext=(0, -12),
+    horizontalalignment='center',
+    verticalalignment='top',
+    fontsize=30,
+    fontweight='medium',
+    color=BLACK,
+    textcoords='offset pixels',
+    xycoords='axes fraction',
+)
+
 # Draw Keep the Faith!
 with cbook.get_sample_data(f'{CWD}/img/keep_the_faith_gray.png') as image_file:
     ktf_data = plt.imread(image_file)
