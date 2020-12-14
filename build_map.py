@@ -127,6 +127,7 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             horizontalalignment='center',
             verticalalignment='center',
             fontsize=label_font_size,
+            fontweight='medium',
             color=label_color,
         )
 
@@ -146,6 +147,7 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             horizontalalignment='center',
             verticalalignment='center',
             fontsize=label_font_size,
+            fontweight='medium',
             color=label_color,
         )
     else:
@@ -245,6 +247,7 @@ for state, state_shape_file in STATE_SHAPE_FILES.items():
             horizontalalignment='center',
             verticalalignment='center',
             fontsize=label_font_size,
+            fontweight='medium',
             color=label_color,
         )
 
@@ -266,7 +269,7 @@ colorbar_axes.annotate(
     horizontalalignment='left',
     verticalalignment='bottom',
     fontsize=90,
-    fontweight='semibold',
+    fontweight='medium',
     color=BLUE,
     textcoords='offset pixels',
     xycoords='axes fraction',
@@ -276,11 +279,11 @@ colorbar_axes.annotate(
 colorbar_axes.annotate(
     'Joseph R. Biden Jr.',
     xy=(0, 0),
-    xytext=(25, 252),  # I don't like the negative space the 'J' creates, so scoot it to the right
+    xytext=(28, 252),  # I don't like the negative space the 'J' creates, so scoot it to the right
     horizontalalignment='left',
     verticalalignment='bottom',
     fontsize=32,
-    fontweight='regular',
+    fontweight='medium',
     color=BLUE,
     textcoords='offset pixels',
     xycoords='axes fraction',
@@ -294,7 +297,7 @@ colorbar_axes.annotate(
     horizontalalignment='left',
     verticalalignment='bottom',
     fontsize=32,
-    fontweight='regular',
+    fontweight='medium',
     color=BLUE,
     textcoords='offset pixels',
     xycoords='axes fraction',
@@ -308,7 +311,7 @@ colorbar_axes.annotate(
     horizontalalignment='left',
     verticalalignment='top',
     fontsize=20,
-    fontweight='regular',
+    fontweight='medium',
     color=BLACK,
     textcoords='offset pixels',
     xycoords='axes fraction',
@@ -322,7 +325,7 @@ colorbar_axes.annotate(
     horizontalalignment='right',
     verticalalignment='bottom',
     fontsize=90,
-    fontweight='semibold',
+    fontweight='medium',
     color=RED,
     textcoords='offset pixels',
     xycoords='axes fraction',
@@ -336,7 +339,7 @@ colorbar_axes.annotate(
     horizontalalignment='right',
     verticalalignment='bottom',
     fontsize=32,
-    fontweight='regular',
+    fontweight='medium',
     color=RED,
     textcoords='offset pixels',
     xycoords='axes fraction',
@@ -350,7 +353,7 @@ colorbar_axes.annotate(
     horizontalalignment='right',
     verticalalignment='bottom',
     fontsize=32,
-    fontweight='regular',
+    fontweight='medium',
     color=RED,
     textcoords='offset pixels',
     xycoords='axes fraction',
@@ -364,7 +367,7 @@ colorbar_axes.annotate(
     horizontalalignment='right',
     verticalalignment='top',
     fontsize=20,
-    fontweight='regular',
+    fontweight='medium',
     color=BLACK,
     textcoords='offset pixels',
     xycoords='axes fraction',
