@@ -10,7 +10,7 @@ I built this using Python 3.9, but it probably works with Python 3.6 or later. T
 make map
 ```
 
-This will start the Docker countain mounted to the local `output/` directory, and generate both PNG and SVG images.
+This will start the Docker countain mounted to the local `output/` directory, and generate a PNG.
 
 ## Keep the Faith!
 
