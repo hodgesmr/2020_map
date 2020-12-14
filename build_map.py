@@ -253,11 +253,9 @@ cmap = colors.ListedColormap([BLUE, RED])
 bounds=[0, 306, 538]
 norm = colors.BoundaryNorm(bounds, cmap.N)
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
-colorbar = fig.colorbar(sm, cax=colorbar_axes, ticks=[269], spacing='proportional', drawedges=False, orientation='horizontal')
+colorbar = fig.colorbar(sm, cax=colorbar_axes, spacing='proportional', drawedges=False, orientation='horizontal')
+colorbar_axes.axvline(x=269, ymin=-0.5, ymax=0.97, linewidth=2, clip_on=False, color=BLACK)
 colorbar.outline.set_visible(False)
-colorbar_axes.set_xticklabels([''])
-colorbar_axes.xaxis.set_tick_params(length=45, width=2, direction='in', colors=BLACK)
-colorbar_axes.xaxis.set_ticks_position('top')
 
 # Annotate the colorbar
 # 306
