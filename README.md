@@ -4,7 +4,7 @@
 
 A custom 2020 Electoral College map created by [Matt Hodges](https://hodgesmr1@gmail.com)
 
-[Download PNG](https://github.com/hodgesmr/2020_map/blob/main/map.png)
+ * [Download PNG](https://github.com/hodgesmr/2020_map/blob/main/map.png)
 
 ## Build and Run
 
