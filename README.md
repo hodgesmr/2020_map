@@ -24,7 +24,7 @@ Faith was one of the core values of the [2020 Biden Campaign Code](https://web.a
 
 On election night, when results were uncertain and millions of votes were still yet to be counted, Joe Biden had one message for supporters: [Keep the faith](https://twitter.com/JoeBiden/status/1323865811031785472).
 
-A trace of President Biden's hand-written message is featured on this map.
+A trace of President Biden's [hand-written message](https://twitter.com/hoeflerco/status/1324088537336193024) is featured on this map.
 
 ## Licenses
 
